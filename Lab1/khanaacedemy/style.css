@@ -51,3 +51,6 @@ table,th,td{
     border: 2px solid white;
     padding: 5px;
 }
+a{  
+    text-decoration: none;
+}
