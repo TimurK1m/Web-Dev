@@ -1,24 +1,30 @@
-
+html{
+    scroll-behavior: smooth;
+}
 body{
     background-color: aqua;
     margin: 0px;
+    padding: 0px;
+    overflow-x: hidden;
 }
 #ma{
     width: 80%;
     background-color: aquamarine;
     margin: 100px auto;
     padding: 10px 20px;
+    border: 2px solid purple;
 }
 #tit{
     text-align: center;
     font-size: 50px;
     font-family:cursive;
-    border:3px solid white
+    border:3px solid white;
 }
 #titi{
-    padding: 30px;
+    padding: 10px;
+    width:calc(100% - 20px);
     background-color: black;
-    height: auto;
+    display: inline-block;
 }
 #fimg{
     display: block;
@@ -27,7 +33,8 @@ body{
 }
 footer{
     background-color: gray;
-    padding: 50px
+    padding: 50px;
+    border-top: 4px ridge blueviolet;
 }
 h1{
     margin:0px;
@@ -38,7 +45,7 @@ span{
     font-style: italic;
     font-weight: bold;
 }
-#lis{
+.lis{
     background-color: bisque;
     padding: 20px;
 }
@@ -53,4 +60,29 @@ table,th,td{
 }
 a{  
     text-decoration: none;
+}
+#but{
+    background-color: blue;
+    border-radius: 10px;
+    position: absolute;
+    display: block;
+    margin: 0 50%;
+    border-bottom: 4px solid black;
+    padding: 10px 5px
+}
+#lil{
+    user-select: none;
+}
+#but:active{
+    border: 0px;
+    margin-top: 5px;
+}
+#clo{
+    margin-top: 20px;
+    background-color:blueviolet;
+    float: right;
+    padding: 0px 30px;
+}
+#butt:hover{
+    margin-left: 100px;
 }
