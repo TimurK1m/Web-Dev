@@ -1,0 +1,53 @@
+
+body{
+    background-color: aqua;
+    margin: 0px;
+}
+#ma{
+    width: 80%;
+    background-color: aquamarine;
+    margin: 100px auto;
+    padding: 10px 20px;
+}
+#tit{
+    text-align: center;
+    font-size: 50px;
+    font-family:cursive;
+    border:3px solid white
+}
+#titi{
+    padding: 30px;
+    background-color: black;
+    height: auto;
+}
+#fimg{
+    display: block;
+    margin: 30px auto;
+    border: 10px double blue;
+}
+footer{
+    background-color: gray;
+    padding: 50px
+}
+h1{
+    margin:0px;
+}
+span{
+    font-family:'Courier New', Courier, monospace;
+    font-size: 30px;
+    font-style: italic;
+    font-weight: bold;
+}
+#lis{
+    background-color: bisque;
+    padding: 20px;
+}
+.pu{
+    margin-top: 10px;
+    border-bottom: 5px dashed black;
+    width: 60%;
+}
+table,th,td{
+    border: 2px solid white;
+    padding: 5px;
+}
