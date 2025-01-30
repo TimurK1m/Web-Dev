@@ -1,0 +1,145 @@
+@font-face {
+    font-family: SFp;
+    src: url(font/SF-Pro-Display-Regular.otf);
+}
+body{
+    margin: 0px;
+}
+.mai{
+    display: flex;
+    justify-content: center; 
+    align-items: center;   
+    height: 720px;
+    background-color: #f9f9f9;
+}
+.wel{
+    width: 400px;
+    height: 286px;
+    padding-right: 32px;
+    margin-right: 100px;
+}
+.face{
+    width: 320px;
+    height: 100px;
+    margin: -28px;
+}
+#te{
+    font-family: SFp, Helvetica, Arial, sans-serif;
+    font-size: 28px;
+    line-height: 32px;
+    font-weight: normal;
+    width: 500px;
+}
+.reg{
+    display: block;
+    width: 396px;
+    border-radius: 6px;
+    height: 315px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, .1), 0px 8px 16px rgba(0, 0, 0, .1);
+    text-align: center;
+    padding-bottom: 24px;
+}
+.int{
+    width: 330px;
+    border: 1px solid #dddfe2;
+    border-radius: 6px;
+    padding: 14px 16px;
+    margin: 6px 0;
+}
+.df{
+    display: block;
+    text-align: center;
+    margin-top: 6px;
+}
+.ot{
+    text-decoration: none;
+    color:blue;
+}
+.ot:hover{
+    text-decoration:underline;
+}
+.nbt{
+    text-align: center;
+    border-radius: 6px;
+    border: none;
+}
+.abtn{
+    color:white;
+    user-select: none;
+    background-color: #42b72a;
+    border-color: #42b72a;  
+    width: 200px;
+    height: 50px; 
+    border: none;
+    border-radius: 6px;
+    font-size: 17px;
+    line-height: 48px;
+    padding: 0 16px;
+    display: inline-block;
+    font-weight: bold;
+    font-family: inherit;
+}
+div{
+    display: block;
+}
+.dbt{
+    display: inline-block;
+    padding-top: 6px;
+    background-color: #0866ff;
+    border-radius: 6px;
+    text-align: center;
+    width: 330px;
+    height: 50px;
+    margin-bottom: 16px;
+}
+.vbt{
+    color: white;
+    background-color: #0866ff;
+    border: none;
+    border-radius: 6px;
+    font-size: 20px;
+    line-height: 48px;
+    padding: 0 16px;
+    width: 332px;
+    
+    font-weight: bold;
+}
+.lin{
+    align-items: center;
+    border-bottom: 1px solid #dadde1;
+    display: flex;
+    margin: 20px 16px;
+    text-align: center;
+}
+.lilte{
+    text-align: center;
+    margin-top: 30px;
+}
+#al{
+    font-weight: bold;
+    text-decoration: none;
+}
+#al:hover{
+    text-decoration: underline;
+}
+.fot{
+    height: 176px;
+    text-align: center;
+    padding-top: 20px;
+    padding-left: 250px;
+    padding-right: 250px;
+}
+.foot{
+    width: 980px;
+    margin: 0 auto;
+    color: #737373;
+    font-size: 12px;
+}
+.sd{
+    display: flex;
+    list-style-type: none;
+    padding: 0px;
+}
+li{
+    padding-left: 10px;
+}

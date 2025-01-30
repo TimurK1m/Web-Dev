@@ -1,0 +1,200 @@
+body{
+    margin:0px;
+}
+.bimg{
+    background-image: url(https://static.cdninstagram.com/images/instagram/xig/homepage/phones/home-phones.png?__makehaste_cache_breaker=HOgRclNOosk);
+    height: 580px;
+    width: 420px;
+    margin-right: 32px;
+    margin-bottom: 12px;
+    
+}
+.sma{
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    height: 660px;
+}
+.mai{
+    display: flex;
+    justify-content: center;
+    background-color: black;
+    margin-top: 32px;
+    margin-right: auto;
+    margin-left: auto;
+}
+.ent{
+    width: 350px;
+    height: 580px;
+    margin-top: 12px;
+}
+.ipt{
+    width: 350px;
+    height: 410px;
+    border: 1px solid white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    margin-bottom: 10px;
+}
+.no{
+    width: 350px;
+    height: 65px;
+    border: 1px solid white;
+    align-items: center;
+    display: flex;
+}
+#nsp{
+    color: white;
+}
+#ndiv{
+    margin: 15px;
+}
+#asp{
+    text-decoration: none;
+}
+.ned{
+    background-image: url(	https://static.cdninstagram.com/rsrc.php/v4/yl/r/2_tD1Q6wIri.png);
+    width: 175px;
+    height: 51px;
+    display: inline-block;
+    background-position: 0px 0px;
+    background-repeat: no-repeat;
+    background-size: auto;
+    border: 0px;
+}
+.bts{
+    margin-top: 24px;
+}
+.ips{
+    margin-left: 40px;
+    margin-right: 40px;
+    margin-bottom: 6px;
+}
+
+.pols{
+    width: 260px;
+    height: 35px;
+    background-color: rgb(31, 31, 31);
+    border-color: aliceblue;
+    border-radius: 2px;
+    color:white;
+    border-width: 1px;
+}
+#pol1{
+    width: 190px;
+    border-right: none;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+}
+#ips1{
+    display: flex;
+}
+#ine{
+    height: 37px;
+    width: 70px;
+    background-color: rgb(31, 31, 31);
+    border: 1px solid aliceblue;
+    border-radius: 2px;
+    border-top-color:darkgray;
+    border-top-left-radius:0px;
+    border-bottom-left-radius: 0px;
+    border-left: none;
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+#inebut{
+    margin: auto;
+    text-align: center;
+    color: white;
+    background-color: transparent;
+    border: none;
+    font-weight: bold;
+}
+::placeholder{
+    color: gray;
+    font-size: 12px;
+}
+.typ{
+    text-align: center;
+    margin: 8px auto;
+    background-color: transparent;
+    display: flex;
+    justify-content: center;
+    overflow-y: visible;
+    flex-direction: column;
+    align-items: stretch;
+    border-radius: 8px;
+}
+.but{
+    background-color: cornflowerblue;
+    width: 268px;
+    height: 32px;
+    text-align: center;
+    color: white;
+    border: none;
+    margin: auto;
+    border-radius: 8px;
+    margin: 8px 40px ;
+}
+.del{
+    margin: 14px 40px 22px 40px;
+    display: flex;
+    flex-direction: row;
+    text-align: center;
+    justify-content: center
+}
+.sep{
+    top: 0.45em;
+    position: relative;
+    flex-shrink: 1;
+    height: 1px;
+    flex-grow: 1;
+    background-color: rgb(38, 38, 38);
+}
+.ili{
+    color: rgb(168,168,168);
+    margin: 0 18px;
+    font-size: .8125rem;
+    display: flex;
+    flex-direction: column;
+}
+#facerel{
+    display: flex;
+    align-items: center;
+}
+#fimg{
+    margin-right: 4px;
+}
+#fbtn{
+    border: none;
+    background-color: transparent;
+}
+#ftxt{
+    color: rgb(0, 149, 246);
+    font-size: 14px;
+}
+#fdiv{
+    text-align: center;
+}
+#pdiv{
+    text-align: center;
+    margin-top: 14px;
+    font-weight: 400;
+}
+#aps{
+    text-decoration: none;
+    color: rgb(224, 241, 255);
+    font-size: 14px;
+}
+.dwn{
+    align-items: center;
+    text-align: center;
+}
+#dtxt{
+    margin: 10px 20px;
+}
+#dims{
+    margin: 10px 0;
+}
