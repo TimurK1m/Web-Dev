@@ -16,13 +16,11 @@
                 </div>
                 <div class="vvod">
                     <input id="znach" placeholder="New Task" style="width: 500px;border-radius: 4px;border-width: 1px;">
-                    <button class="add" id="ele">Add</button>
+                    <button class="add" id="ele" >Add</button>
                     
                 </div>
                 <div>
                     <div class="fl" id="add_after_me">
-                        
-                        
                         
                     </div>
                 </div>
@@ -42,9 +40,9 @@
                 const newDiv = document.createElement('div');
                 newDiv.innerHTML =  
                 `
-                        <div class="vnut" id="${i}">
-                            <input type="checkbox" class="vc">
-                            <span name="popusk" id=${i}>
+                        <div class="vnut" id="a${i}b">
+                            <input type="checkbox" class="vc" id="a${i}" onclick="cit(this.id)">
+                            <span class="popusk" id="a${i}a">
                                 ${a}
                             </span>
                             <button class="vb" id="${i}" onclick="gfg(this.id);delCode()">
@@ -61,10 +59,22 @@
                 ud=clicked
             }
             function delCode(){
-                let b=document.getElementById(ud)
-                b.remove()
+                let b=document.getElementById("a"+ud+"b");
+                b.remove();
                 ud=null;
                 i--;
+            }
+            function cit(boid){
+                var box=document.getElementById(boid)
+                elt=document.getElementById(boid+"a")
+                if (box.checked){
+                    let elt=document.getElementById(boid+"a")
+                    elt.classList.add("cher")
+                }
+                else{
+                    let elt=document.getElementById(boid+"a")
+                    elt.classList.remove("cher")
+                }
             }
         </script>
     </body>

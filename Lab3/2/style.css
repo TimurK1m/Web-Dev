@@ -24,7 +24,6 @@ body{
 }
 .ort{
     width: 800px;
-    border: 1px solid black;
 
 }
 .vvod{
@@ -65,4 +64,7 @@ body{
 }
 .vc{
     margin-left: 20px;
+}
+.cher{
+    text-decoration:line-through;
 }
