@@ -10,6 +10,7 @@ interface Product {
   link: string;
   selectedImage?: string;
   likes: number;
+  category: string;
 }
 
 @Component({
@@ -42,17 +43,18 @@ interface Product {
 })
 export class ProductItemComponent {
   @Input() product!: Product;
-  @Output() remove = new EventEmitter<number>();
-
-  changeImage(img: string) {
+  @Output() remove = new EventEmitter<Product>();
+  @Output() like = new EventEmitter<Product>();
+  
+  changeImage(img: string): void {
     this.product.selectedImage = img;
   }
 
-  removeProduct() {
-    this.remove.emit(this.product.id);
+  removeProduct(): void {
+    this.remove.emit(this.product);
   }
 
-  likeProduct() {
-    this.product.likes++;
+  likeProduct(): void {
+    this.like.emit(this.product);
   }
 }

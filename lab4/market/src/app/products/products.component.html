@@ -1,1 +1,7 @@
-<img [src]="product.image" (click)="changeImage(product)" alt="{{ product.name }}">
+<div *ngFor="let category of categories">
+    <h2>{{ category.name }}</h2>
+    <div *ngFor="let product of getProductsByCategory(category.key)">
+      <app-product-item [product]="product"></app-product-item>
+    </div>
+</div>
+  

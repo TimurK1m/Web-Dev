@@ -1,17 +1,19 @@
-import { Component } from '@angular/core';
+import { Component,Input } from '@angular/core';
+import { ProductListComponent } from '../product-list/product-list.component';
 import { CommonModule } from '@angular/common';
-import { RouterLink } from '@angular/router';
-
+import { ProductItemComponent } from '../product-item/product-item.component';
 interface Product {
-  id:number;
+  id: number;
   name: string;
   description: string;
   rating: number;
   images: string[];
   link: string;
   selectedImage?: string;
-  likes:0;
+  likes: number;
+  category: string;
 }
+
 interface Category {
   name: string;
   products: Product[];
@@ -19,46 +21,30 @@ interface Category {
 
 @Component({
   selector: 'app-products',
-  standalone: true,
-  imports: [RouterLink, CommonModule],
+  imports:[ProductListComponent,CommonModule],
+  providers:[ProductItemComponent],
   template: `
-  <main>
-    <a [routerLink]="['/']">
-      <header class="brand-name"></header>
-    </a>
-      <div class="product-list">
-        <div *ngFor="let product of products" class="product-card">
-            <div class="gallery">
-              <div style="height: 400px;">
-                <img [src]="product.selectedImage || product.images[0]" 
-                    alt="{{ product.name }}" 
-                    class="main-img">
-              </div>
-
-              <div class="thumbnail-container">
-                <img *ngFor="let img of product.images" 
-                    [src]="img" 
-                    class="thumbnail"
-                    (click)="changeMainImage(product, img)">
-              </div>
-          </div>
-          <h2>{{ product.name }}</h2>
-          <p>{{ product.description }}</p>
-          <p>⭐ Rating: {{ product.rating }}</p>
-          <a [href]="product.link" target="_blank" class="buy-btn">View on Kaspi.kz</a>
-          <div class="share-buttons">
-            <button (click)="shareOnWhatsapp(product)">📲 WhatsApp</button>
-            <button (click)="shareOnTelegram(product)">📢 Telegram</button>
-          </div>
-        </div>
+    <div class="container">
+      <h1>Product Categories</h1>
+      <div class="categories">
+        <button *ngFor="let category of categories" 
+                (click)="selectCategory(category)">
+          {{ category.name }}
+        </button>
       </div>
-  </main>
+      
+      <app-product-list 
+        *ngIf="selectedCategory" 
+        [products]="selectedCategory.products"
+        (remove)="removeProduct($event)">
+      </app-product-list>
+    </div>
   `,
   styleUrls: ['./products.component.css']
 })
 export class ProductsComponent {
-  products: Product[] = [
-    {
+  categories = [
+    { name: 'Electronics', key: 'electronics', products: [{
       id:1,
       name: "iPhone 15 Pro Max",
       description: "Latest Apple iPhone with A17 chip",
@@ -71,6 +57,7 @@ export class ProductsComponent {
       link: "https://kaspi.kz/shop/p/apple-iphone-15-pro-max-256gb-seryi-113138420/?c=750000000",
       selectedImage: "",
       likes:0,
+      category: "electronics",
     },
     {
       id:2,
@@ -85,6 +72,7 @@ export class ProductsComponent {
       link: "https://kaspi.kz/shop/p/samsung-galaxy-s23-ultra-12-gb-256-gb-chernyi-109174566/?c=750000000",
       selectedImage: "",
       likes:0,
+      category: "electronics",
     },
     {
       id:3,
@@ -98,6 +86,7 @@ export class ProductsComponent {
       ],
       link: "https://kaspi.kz/shop/p/podstavka-afkas-nova-ak-37-chernyi-107656268/?c=750000000",
       likes:0,
+      category: "electronics",
     },
     {
       id:4,
@@ -111,6 +100,7 @@ export class ProductsComponent {
       ],
       link: "https://kaspi.kz/shop/p/xiaomi-redmi-13c-8-gb-256-gb-chernyi-114695323/?c=750000000",
       likes:0,
+      category: "electronics",
     },
     {
       id:5,
@@ -124,8 +114,10 @@ export class ProductsComponent {
       ],
       link: "https://kaspi.kz/shop/p/kabel-apple-lightning-m-usb-typec-m-belyi-40500508/?c=750000000",
       likes:0,
+      category: "electronics",
     },
-    {
+  ]},
+    { name: 'Clothing', key: 'clothing', products: [{
       id:6,
       name: "Зарядное устройство Apple 18W USB-C Power Adapter USB Type-C белый",
       description: "Представляет собой компактное и эффективное зарядное устройство, предназначенное для быстрой и эффективной зарядки ваших устройств.",
@@ -137,6 +129,7 @@ export class ProductsComponent {
       ],
       link: "https://kaspi.kz/shop/p/apple-18w-usb-c-power-adapter-usb-type-c-belyi-102743952/?c=750000000",
       likes:0,
+      category: "electronics",
     },
     
     {
@@ -151,6 +144,7 @@ export class ProductsComponent {
       ],
       link: "https://kaspi.kz/shop/p/sp-005-10000-mach-chernyi-115816559/?c=750000000",
       likes:0,
+      category: "electronics",
     },
     
     {
@@ -165,6 +159,7 @@ export class ProductsComponent {
       ],
       link: "https://kaspi.kz/shop/p/xiaomi-redmi-watch-5-active-51-mm-chernyi-chernyi-123879372/?c=750000000",
       likes:0,
+      category: "electronics",
     },
     
     {
@@ -179,6 +174,7 @@ export class ProductsComponent {
       ],
       link: "https://kaspi.kz/shop/p/huawei-watch-fit-3-chernyi-119668941/?c=750000000",
       likes:0,
+      category: "electronics",
     },
     
     {
@@ -193,55 +189,101 @@ export class ProductsComponent {
       ],
       link: "https://kaspi.kz/shop/p/podstavka-floveme-g901-chernyi-104680546/?c=750000000",
       likes:0,
-    },
-  ];
-
-  changeMainImage(product: Product, newImage: string) {
-    product.selectedImage = newImage;
-  }
-  shareOnWhatsapp(product:Product){
-    const url=`https://wa.me/?text=Check this product: ${product.link}`;
-    window.open(url,'_blank')
-  }
-  
-  shareOnTelegram(product:Product){
-    const url =`https://t.me/share/url?url=${product.link}&text=Check this product`;
-    window.open(url,'_blank')
-  }
-
-    categories: Category[] = [
-      { name: 'Electronics', products: this.generateProducts(1) },
-      { name: 'Clothing', products: this.generateProducts(2) },
-      { name: 'Books', products: this.generateProducts(3) },
-      { name: 'Home Appliances', products: this.generateProducts(4) }
-    ];
-  
-    selectedCategory: Category | null = null;
-  
-    selectCategory(category: Category) {
-      this.selectedCategory = category;
-    }
-  
-    removeProduct(productId: number) {
-      if (this.selectedCategory) {
-        this.selectedCategory.products = this.selectedCategory.products.filter(p => p.id !== productId);
-      }
-    }
-  
-    generateProducts(categoryId: number): Product[] {
-      return Array.from({ length: 5 }, (_, i) => ({
-        id: categoryId * 10 + i,
-        name: `Product ${categoryId * 10 + i}`,
-        description: `Description for product ${categoryId * 10 + i}`,
-        rating: 4.5,
+      category: "electronics",
+    }]},
+    { name: 'Books', key: 'books', products: [
+      {
+        id:10,
+        name: "Книга Клир Д.: Атомные привычки",
+        description: "Лучшая деловая книга 2018 года по версии Fast Company.Лучшая книга по самопомощи 2018 года по версии Business Insider.Может ли одна монетка ",
+        rating: 4.9,
         images: [
-          `https://via.placeholder.com/150?text=Product${categoryId * 10 + i}-1`,
-          `https://via.placeholder.com/150?text=Product${categoryId * 10 + i}-2`,
-          `https://via.placeholder.com/150?text=Product${categoryId * 10 + i}-3`
+          "https://resources.cdn-kaspi.kz/img/m/p/h4c/h9a/86244289314846.png?format=gallery-medium",
+          "https://resources.cdn-kaspi.kz/img/m/p/h86/h70/86244289347614.png?format=gallery-medium",
+          "https://resources.cdn-kaspi.kz/img/m/p/ha0/h3e/86244289380382.png?format=gallery-medium"
         ],
-        link: `https://example.com/product/${categoryId * 10 + i}`,
-        selectedImage: `https://via.placeholder.com/150?text=Product${categoryId * 10 + i}-1`,
+        link: "https://kaspi.kz/shop/p/klir-d-atomnye-privychki-117680550/?c=750000000",
         likes:0,
-      }));
+        category: "books",
+      },
+      {
+        id:10,
+        name: "Книга Керімбай С., Нәби Ә.: Қаныш және Ғылыми майдан",
+        description: "Керімбай С., Нәби Ә.: Қаныш және Ғылыми майдан — бұл кітап ",
+        rating: 4.8,
+        images: [
+          "https://resources.cdn-kaspi.kz/img/m/p/h63/h8a/87162104250398.png?format=gallery-medium",
+          "https://resources.cdn-kaspi.kz/img/m/p/h48/hcf/87162104315934.png?format=gallery-medium",
+          "https://resources.cdn-kaspi.kz/img/m/p/ha3/h09/87162104381470.png?format=gallery-medium"
+        ],
+        link: "https://kaspi.kz/shop/p/ker-mbai-s-n-bi-anysh-zh-ne-ylymi-maidan-123730850/?c=750000000",
+        likes:0,
+        category: "books",
+      },
+      {
+        id:10,
+        name: "Подставка FLOVEME G901 черный",
+        description: "Представляет собой компактное и эффективное зарядное устройство, предназначенное для быстрой и эффективной зарядки ваших устройств.",
+        rating: 4.8,
+        images: [
+          "https://resources.cdn-kaspi.kz/img/m/p/h13/hb5/68724234649630.jpg?format=gallery-medium",
+          "https://resources.cdn-kaspi.kz/img/m/p/hae/h00/65134564900894.jpg?format=gallery-medium",
+          "https://resources.cdn-kaspi.kz/img/m/p/h37/h37/65134567653406.jpg?format=gallery-medium"
+        ],
+        link: "https://kaspi.kz/shop/p/podstavka-floveme-g901-chernyi-104680546/?c=750000000",
+        likes:0,
+        category: "electronics",
+      },
+      {
+        id:10,
+        name: "Книга Керімбай С., Құспан А.: Бейсен және болмыс",
+        description: "Бұл кітапта журналист Бейсен Құранбектің болмысына ",
+        rating: 4.8,
+        images: [
+          "https://resources.cdn-kaspi.kz/img/m/p/h02/h88/85767456817182.jpg?format=gallery-medium",
+          "https://resources.cdn-kaspi.kz/img/m/p/hf5/h2a/85767456849950.jpg?format=gallery-medium",
+          "https://resources.cdn-kaspi.kz/img/m/p/h80/h17/85767456882718.jpg?format=gallery-medium"
+        ],
+        link: "https://kaspi.kz/shop/p/ker-mbai-s-span-a-beisen-zh-ne-bolmys-103354158/?c=750000000",
+        likes:0,
+        category: "books",
+      },
+      {
+        id:10,
+        name: "Книга Спаркс Н.: Спеши любить",
+        description: "Тихий городок Бофор. Каждый год Лэндон Картер приезжает сюда, чтобы вспомнить историю своей первой любви… Историю страсти и нежности, много лет назад",
+        rating: 4.8,
+        images: [
+          "https://resources.cdn-kaspi.kz/img/m/p/ha5/h1b/63846893322270.jpg?format=gallery-medium",
+          "https://resources.cdn-kaspi.kz/img/m/p/h30/hd9/63846896074782.jpg?format=gallery-medium",
+          "https://resources.cdn-kaspi.kz/img/m/p/h10/h18/63846898958366.jpg?format=gallery-medium"
+        ],
+        link: "https://kaspi.kz/shop/p/sparks-n-speshi-ljubit--100259730/?c=750000000",
+        likes:0,
+        category: "books",
+      },] },
+    { name: 'Home Appliances', key: 'home-appliances', products: [] }
+  ];
+  
+
+  constructor(private productList: ProductListComponent) {
+    this.products = this.productList.products; // Получаем все продукты из ProductListComponent
+  }
+
+  getProductsByCategory(categoryKey: string): Product[] {
+    return this.products.filter(product => product.category === categoryKey);
+  }
+  selectedCategory: Category | null = null;
+
+  selectCategory(category: Category) {
+    this.selectedCategory = category;
+  }
+
+  removeProduct(productId: number) {
+    if (this.selectedCategory) {
+      this.selectedCategory.products = this.selectedCategory.products.filter(p => p.id !== productId);
     }
+  }
+
+  @Input() products: Product[] = [];
 }
