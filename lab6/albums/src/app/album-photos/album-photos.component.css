@@ -1,0 +1,24 @@
+.photos-container {
+  text-align: center;
+  padding: 20px;
+}
+
+.photos-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  justify-content: center;
+}
+
+.photo-card {
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 10px;
+  text-align: center;
+  width: 150px;
+}
+
+.photo-card img {
+  width: 100%;
+  border-radius: 5px;
+}

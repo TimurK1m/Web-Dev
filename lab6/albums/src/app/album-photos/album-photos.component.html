@@ -1,0 +1,11 @@
+<div class="photos-container">
+  <h2>Фотографии альбома {{ albumId }}</h2>
+  <a [routerLink]="['/albums',albumId]">Back</a>
+  <div class="photos-grid">
+    <div class="photo-card" *ngFor="let photo of photos">
+      <img [src]="photo.thumbnailUrl" [alt]="photo.title" />
+      <p>{{ photo.title }}</p>
+    </div>
+  </div>
+</div>
+<router-outlet/>

@@ -1,0 +1,10 @@
+<div class="container mt-4">
+  <h2>Albums</h2>
+  <ul class="list-group">
+    <li class="list-group-item" *ngFor="let album of albums">
+      <a [routerLink]="['/albums/', album.id]">{{ album.title }}</a>
+      <button (click)="deleteAlbum(album.id)">Удалить</button>
+    </li>
+  </ul>
+</div>
+      
