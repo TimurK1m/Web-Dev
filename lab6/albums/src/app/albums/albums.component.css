@@ -4,3 +4,18 @@ button{
     border-color: blueviolet;
     border-radius: 3px;
 }
+.mai{
+    background-color: antiquewhite;
+    padding: 10px;
+}
+h2{
+    margin: 0px;
+}
+.cont{
+    display: flex;
+    align-items:center;
+    justify-content:space-between;
+}
+.bt{
+    margin-left: 95%;
+}

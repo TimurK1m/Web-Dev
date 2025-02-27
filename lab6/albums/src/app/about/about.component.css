@@ -1,0 +1,17 @@
+img{
+    width: 300px;
+    border: 15px ridge black;
+}
+.port{
+    display: flex;
+    height: 100%;
+}
+html{
+    padding: 10px;
+    background-color: antiquewhite;
+}
+.info{
+    margin-left: 300px;
+    border: 2px solid black;
+    padding: 5px;
+}
