@@ -1,0 +1,11 @@
+a=int(input())
+b=int(input())
+c=int(input())
+a1=int(input())
+b1=int(input())
+c1=int(input())
+d=0
+d1=0
+d=a*3600+b*60+c
+d1=a1*3600+b1*60+c1
+print(d1-d)
