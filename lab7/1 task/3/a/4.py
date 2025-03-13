@@ -1,8 +1,4 @@
-x=int(input())
-
-if x<0:
-    print(-1)
-elif x>0:
-    print(1)
-else:
-    print(0)
+def missing_char(str, n):
+  front = str[:n]   # up to but not including n
+  back = str[n+1:]  # n+1 through end of string
+  return front + back
