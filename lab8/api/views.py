@@ -3,6 +3,8 @@ from rest_framework import generics
 from .models import Product,Category
 from .serializers import ProductSerializer,CategorySerializer
 
+def api_list(request):
+    return render(request,'api/api_list.html')
 
 class ProductList(generics.ListCreateAPIView):
     queryset=Product.objects.all()
