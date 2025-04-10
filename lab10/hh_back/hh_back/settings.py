@@ -26,7 +26,7 @@ SECRET_KEY = 'django-insecure-7xq&3=h#e!huak(6n6v6=s=jueoezmxx=%ccg6y5t=v#vd!kzy
 DEBUG = True
 
 ALLOWED_HOSTS = []
-CORS_ALLOW_ALL_ORIGINS = True
+
 
 
 # Application definition
@@ -40,9 +40,11 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'api',  # Убедись, что этот app присутствует
     'rest_framework', # Эта строка должна быть здесь
+    'corsheaders',
 ]
 
 MIDDLEWARE = [ # Это тоже должно быть здесь
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -124,3 +126,4 @@ STATIC_URL = 'static/'
 # https://docs.djangoproject.com/en/5.1/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+CORS_ALLOW_ALL_ORIGINS = True
